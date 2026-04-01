@@ -48,7 +48,7 @@ class TestAffinePower:
 
         np.testing.assert_allclose(mapped_reference_int, physical_int)
 
-    def bound_order_test_failure(self):
+    def test_bound_order_test_failure(self):
         """
         Check for failure
         """
@@ -67,7 +67,7 @@ class TestAffinePlotter:
         return AffinePolynomialBasis(basis, a=2, b=3)
 
     @patch("matplotlib.pyplot.show")
-    def affine_test_plot_basis_smoke(self, mock_show, affine):
+    def test_affine_plot_basis_smoke(self, mock_show, affine):
         """
         Smoke Test: Does plot_basis run without error?
         We mock plt.show() so no window actually pops up during testing.
@@ -82,7 +82,7 @@ class TestAffinePlotter:
         mock_show.assert_called_once()
 
     @patch("matplotlib.pyplot.show")
-    def affine_test_plot_fit_smoke(self, mock_show, affine):
+    def test_affine_plot_fit_smoke(self, mock_show, affine):
         """Smoke Test: Does plot_fit run without error?"""
         plotter = Plotter()
         
