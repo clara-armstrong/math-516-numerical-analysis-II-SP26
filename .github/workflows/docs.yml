@@ -40,7 +40,9 @@ jobs:
         run: sphinx-apidoc -f -o docs/ src/numanalysislib
 
       - name: Build Sphinx HTML
-        run: sphinx-build -b html docs/ docs/_build/html
+        run: |
+          sphinx-build -b html docs/ docs/_build/html
+          touch docs/_build/html/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
