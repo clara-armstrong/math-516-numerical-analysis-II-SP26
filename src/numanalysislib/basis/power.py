@@ -9,6 +9,11 @@ class PowerBasis(PolynomialBasis):
     """
     Implements the standard Monomial Basis: {1, x, x^2, ..., x^n}.
     """
+    def __init__(self, degree: int):
+        super().__init__(degree, a = 0, b = 1)
+
+
+
     def evaluate_basis(self, index: int, x: np.ndarray) -> np.ndarray:
         """
         Evaluates x^index.

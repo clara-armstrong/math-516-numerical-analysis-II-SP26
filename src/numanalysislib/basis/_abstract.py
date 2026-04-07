@@ -7,9 +7,11 @@ class PolynomialBasis(ABC):
     of polynomials (or functions).
     """
 
-    def __init__(self, degree: int):
+    def __init__(self, degree: int, a: float, b: float):
         self.degree = degree
         self.n_dofs = degree + 1
+        self.a = a
+        self.b = b
 
     @abstractmethod
     def evaluate_basis(self, index: int, x: np.ndarray) -> np.ndarray:

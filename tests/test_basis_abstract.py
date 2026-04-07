@@ -7,6 +7,8 @@ from numanalysislib.basis._abstract import PolynomialBasis
 # We create a simple "Monomial" basis just for testing the base logic.
 # -------------------------------------------------------------------------
 class MockBasis(PolynomialBasis):
+    def __init__(self, degree: int):
+        super().__init__(degree = degree, a = 0, b = 5)
     def evaluate_basis(self, index: int, x: np.ndarray) -> np.ndarray:
         # Simple monomial basis: x^index
         return x ** index
