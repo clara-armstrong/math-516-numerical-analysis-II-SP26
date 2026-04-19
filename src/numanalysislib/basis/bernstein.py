@@ -10,9 +10,7 @@ from numanalysislib.basis._abstract import PolynomialBasis
 
 class BernsteinBasis(PolynomialBasis):
     """  
-
     Implements the Bernstein Basis: {B_{0,n}, ..., B_{i,n}} on [0,1].
-
     """
     def __init__(self, degree:int) -> None:
 
@@ -46,7 +44,6 @@ class BernsteinBasis(PolynomialBasis):
     
     def fit(self, x_nodes: np.ndarray, y_nodes: np.ndarray) -> np.ndarray:
         """
-
         Solving the linear system Ac = y to force interpolation
 
     
@@ -73,9 +70,9 @@ class BernsteinBasis(PolynomialBasis):
 
         # Build Bernstein matrix A
         A = np.zeros((self.n_dofs, self.n_dofs))
-        for i in range(self.n_dofs):
-            for j in range(self.n_dofs):
-                A[i, j] = comb(self.degree, j) * (x_nodes[i] ** j) * ((1 - x_nodes[i]) ** (self.degree - j))
+        for j in range(self.n_dofs):
+            A[:, j] = self.evaluate_basis(j, x_nodes)
+    
 
         try:
             coefficients = np.linalg.solve(A, y_nodes)
